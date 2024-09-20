@@ -1,32 +1,20 @@
-package JDBC;
-
+package jDBC;
 import java.sql.*;
 
 public class First {
 
-	public static void main(String[] args)throws Exception{
-		Connection conn=null;
-		Statement stmt=null;
-		ResultSet rs=null;
-		
+	public static void main(String[] args)  {
+		try {
+		// Class is Class name. hence  C must be capital
+//		forName() is method.hence N must be capital.
 		Class.forName("com.mysql.cj.jdbc.Driver");
 		
-		conn=DriverManager.getConnection("jdbc:mysql://localhost/car","root","root123");
-		
-		stmt=conn.createStatement();
-		
-		rs=stmt.executeQuery("Select * from car;");
-		
-		while(rs.next()) {
-			System.out.println("Car no ->"+rs.getInt(1)+"\t Name ->"+rs.getString(2)+"\t Price ->"+rs.getInt(3));
+		// forName will load Driver class into memory
+		//and then static block of Driver class is executed where new Driver() is write
+		System.out.println("Done!");
+		}catch(Exception e) {
+			System.out.println("Error name ->"+e);
 		}
-		
-		conn.close();
-		
-		
-		
-		
-
 	}
 
 }
